@@ -1,0 +1,112 @@
+/* ----------------------------------- */
+/* imported reset                      */
+/* ----------------------------------- */
+
+@import url(./reset.css);
+
+/* ----------------------------------- */
+/* variables and selection             */
+/* ----------------------------------- */
+
+:root {
+    --clr-primary-100: 0, 0%, 0%;
+    --clr-primary-900: 0, 0%, 100%;
+
+    --clr-accent-400: 300, 92%, 38%;
+
+    --fs-400: 1rem;
+    --fs-500: 1.25rem;
+    --fs-700: 2rem;
+
+    --ff-primary: 'Montserrat', sans-serif;
+
+    --size-400: 1rem;
+
+    --tr-time: 200ms;
+    --tr-func: ease-in;
+}
+
+::selection {
+    background-color: hsl(var(--clr-primary-900));
+    color: hsl(var(--clr-primary-100));
+}
+
+/* ----------------------------------- */
+/* body                                */
+/* ----------------------------------- */
+
+body {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+
+    background-color: hsl(var(--clr-primary-100));
+    font-family: var(--ff-primary);
+    font-size: var(--fs-700);
+    color: hsl(var(--clr-primary-900));
+}
+
+/* ----------------------------------- */
+/* timer                               */
+/* ----------------------------------- */
+
+.timer {
+    --width: 60rem;
+
+    width: min(var(--width), 100% - var(--size-400));
+    background-color: hsl(var(--clr-primary-900), .1);
+    display: grid;
+    padding: 3rem; 
+    border-radius: var(--size-400);
+    gap: var(--size-400);
+    text-align: center;
+}
+
+.timer__container {
+    --width: 40rem;
+
+    width: min(var(--width), 100% - var(--size-400));
+    margin-inline: auto;
+}
+
+.timer__start {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, max-content);
+    gap: var(--size-400);
+    max-width: 100%;
+}
+
+@media (max-width: 700px) {
+    .timer__start {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--size-400);
+        box-sizing: border-box;
+    }
+}
+
+.timer__input {
+    background-color: transparent;
+    border: 1px solid hsl(var(--clr-primary-900));
+    color: hsl(var(--clr-primary-900));
+    padding: var(--size-400);
+    transition: all var(--tr-time) var(--tr-func);
+}
+
+.timer__input:is(:focus, :focus-visible) {
+    outline: none;
+    border: 1px solid hsl(var(--clr-accent-400));
+}
+
+.button {
+    padding: .25rem .75rem;
+    background-color: transparent;
+    border: 1px solid hsl(var(--clr-primary-900));
+    color: hsl(var(--clr-primary-900));
+    transition: all var(--tr-time) var(--tr-func);
+    cursor: pointer;
+}
+
+.button:hover {
+    opacity: .6;
+}
